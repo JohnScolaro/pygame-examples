@@ -1,0 +1,26 @@
+[project]
+name = "pygame_examples"
+version = "0.1.0"
+description = "An example PyGame game."
+authors = [{ name = "John Scolaro", email = "johnscolaro95@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "pygame-ce==2.4.1",
+    "pytweening==1.2.0",
+    "opencv-python==4.10.0.84"
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.2.1", "isort==5.13.2", "black==24.4.2", "pre-commit==3.7.1"]
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
+[tool.isort]
+profile = "black"
