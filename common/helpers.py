@@ -89,3 +89,28 @@ class MovingAverage:
         if not self.queue:
             return 0
         return self.sum / len(self.queue)
+
+
+def wrapf(value: float, min_value: float, max_value: float):
+    range_size = max_value - min_value
+    wrapped_value = (value - min_value) % range_size + min_value
+    return wrapped_value if wrapped_value != max_value else min_value
+
+
+def clamp(value, minimum, maximum):
+    return max(minimum, min(value, maximum))
+
+
+def scale_and_clamp(
+    in_a: float, in_b: float, out_a: float, out_b: float, value: float
+) -> float:
+    if in_a == in_b:
+        raise ValueError("Both inputs cannot be the same value")
+
+    # Scale the value
+    scaled_value = ((value - in_a) / (in_b - in_a)) * (out_b - out_a) + out_a
+
+    # Clamp the value within the output range
+    clamped_value = clamp(scaled_value, min(out_a, out_b), max(out_a, out_b))
+
+    return clamped_value

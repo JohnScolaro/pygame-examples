@@ -461,10 +461,12 @@ def main() -> None:
 
     font_manager.load_font("main_font", M5X7, 16)
     audio_manager.load_sound(
-        "card_sound_4", os.path.join(get_sounds_directory(), "card_sound_4.wav")
+        "card_sound_4",
+        os.path.join(get_sounds_directory(), "card_sounds", "card_sound_4.wav"),
     )
     audio_manager.load_sound(
-        "card_sound_5", os.path.join(get_sounds_directory(), "card_sound_5.wav")
+        "card_sound_5",
+        os.path.join(get_sounds_directory(), "card_sounds", "card_sound_5.wav"),
     )
     audio_manager.set_sound_volume("card_sound_4", 0.5)
     audio_manager.set_sound_volume("card_sound_5", 0.5)

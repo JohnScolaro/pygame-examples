@@ -4,6 +4,7 @@ import pygame
 class AudioManager:
     def __init__(self):
         pygame.mixer.init()
+        pygame.mixer.set_num_channels(100)
         self.sounds = {}
         self.sfx_muted = False
         self.sfx_volume = 1.0
@@ -14,9 +15,17 @@ class AudioManager:
 
     def play_sound(self, name):
         channel = pygame.mixer.find_channel()
+        if channel is None:
+            raise Exception(
+                "We have ran out of channels. Are you playing too many sounds at the same time?"
+            )
         channel.set_volume(self.sfx_volume)
         if not self.sfx_muted:
             self.sounds[name].play()
+
+    def assert_sound_exists(self, name: str) -> None:
+        """Checks that a sound exists in the audio manager."""
+        assert name in self.sounds
 
     def set_sound_volume(self, name, volume):
         self.sounds[name].set_volume(volume)

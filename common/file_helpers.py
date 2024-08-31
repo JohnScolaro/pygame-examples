@@ -29,3 +29,11 @@ def get_fonts_directory() -> str:
 
 def get_cards_directory() -> str:
     return os.path.join(get_assets_directory(), "cards")
+
+
+def get_sprites_directory() -> str:
+    return os.path.join(get_assets_directory(), "sprites")
+
+
+def get_gems_directory() -> str:
+    return os.path.join(get_sprites_directory(), "gems")
